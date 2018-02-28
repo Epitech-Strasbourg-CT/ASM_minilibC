@@ -1,0 +1,7 @@
+CMakeLists.txt
+cmake-build-*
+.idea
+*.o
+*~
+*#
+main.c
