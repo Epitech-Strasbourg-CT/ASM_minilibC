@@ -17,6 +17,7 @@ NAME	=	libasm.so
 
 SRC	=	strcmp.asm	\
 		strncmp.asm	\
+		strcasecmp.asm	\
 		strlen.asm	\
 		memset.asm	\
 		memcpy.asm	\
