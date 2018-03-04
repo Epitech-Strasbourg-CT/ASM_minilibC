@@ -3,7 +3,6 @@ BITS 64
 SECTION .text
 
 GLOBAL my_strstr:function
-EXTERN my_strcmp
 
 my_strstr:
 
