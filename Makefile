@@ -15,7 +15,13 @@ ASM_FOLDER	=	./asm/
 
 NAME	=	libasm.so
 
-SRC	=	strlen.asm
+SRC	=	strcmp.asm	\
+		strncmp.asm	\
+		strlen.asm	\
+		memset.asm	\
+		memcpy.asm	\
+		strstr.asm	\
+		strchr.asm
 
 OBJ	=	$(addprefix $(ASM_FOLDER), $(SRC:.asm=.o))
 
@@ -28,7 +34,7 @@ $(NAME): $(OBJ)
 	$(CC) -shared -o $(NAME) $(OBJ)
 
 test: re
-	$(CC) -o $(TEST) main.c
+	$(CC) -o $(TEST) -g main.c $(OBJ)
 clean:
 	rm -f $(OBJ)
 

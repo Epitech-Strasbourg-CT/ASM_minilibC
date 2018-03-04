@@ -2,12 +2,12 @@ BITS 64
 
 SECTION .text
 
-GLOBAL my_strlen
+GLOBAL my_strlen:function
 
 my_strlen:
 
- PUSH RBP		; Prologue
- MOV RBP, RSP		; Stack frame setup
+ PUSH RBP
+ MOV RBP, RSP
 
  XOR RAX, RAX
 
@@ -18,5 +18,5 @@ loop:
 	JMP loop
 
 end:
- LEAVE			; Epilogue
- RET			; Return
+ LEAVE
+ RET
