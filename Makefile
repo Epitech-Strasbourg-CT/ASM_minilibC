@@ -19,9 +19,13 @@ SRC	=	strcmp.asm	\
 		strncmp.asm	\
 		strcasecmp.asm	\
 		strlen.asm	\
+		strpbrk.asm	\
+		strcspn.asm	\
+		rindex.asm	\
 		memset.asm	\
 		memcpy.asm	\
 		strstr.asm	\
+		memmove.asm	\
 		strchr.asm
 
 OBJ	=	$(addprefix $(ASM_FOLDER), $(SRC:.asm=.o))
