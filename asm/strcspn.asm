@@ -10,31 +10,21 @@ my_strcspn:
  MOV RBP, RSP
 
  XOR RAX, RAX
- XOR R8, R8
-
- CMP RDI, 0
- JE end
 
 loop:
-	CMP BYTE[RDI+R8], 0
+	CMP BYTE[RDI+RAX], 0
 	JE end
-
+	MOV R8B, BYTE[RDI+RAX]
 	XOR R9, R9
-	MOV R11, 1
-	accept_loop:
+	search_loop:
 		CMP BYTE[RSI+R9], 0
-        	JE end_accept_loop
-
-		MOV R10, [RSI+R9]
-		CMP R10B, BYTE[RDI+R8]
-		MOV R11, 0
-		end_check_char:
-
+		JE end_search_loop
+		CMP BYTE[RSI+R9], R8B
+		JE end
 		INC R9
-		JMP accept_loop
-	end_accept_loop:
-	ADD RAX, R11
-	INC R8
+		JMP search_loop
+	end_search_loop:
+	INC RAX
 	JMP loop
 
 end:
