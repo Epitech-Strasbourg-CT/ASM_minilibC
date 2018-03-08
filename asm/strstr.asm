@@ -10,7 +10,7 @@ my_strstr:
  MOV RBP, RSP
 
 loop:
-	CMP RDI, 0
+	CMP BYTE[RDI], 0
 	JE not_found ; test end of first str
 
 	XOR RCX, RCX
