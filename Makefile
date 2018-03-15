@@ -5,7 +5,7 @@
 ## ASM
 ##
 
-CC	=	gcc
+CC	=	ld
 
 ASM	=	nasm
 
