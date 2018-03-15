@@ -2,9 +2,9 @@ BITS 64
 
 SECTION .text
 
-GLOBAL my_strstr:function
+GLOBAL strstr:function
 
-my_strstr:
+strstr:
 
  PUSH RBP
  MOV RBP, RSP

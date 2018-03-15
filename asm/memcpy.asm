@@ -2,9 +2,9 @@ BITS 64
 
 SECTION .text
 
-GLOBAL my_memcpy:function
+GLOBAL memcpy:function
 
-my_memcpy:
+memcpy:
 
  PUSH RBP
  MOV RBP, RSP

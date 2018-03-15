@@ -2,9 +2,9 @@ BITS 64
 
 SECTION .text
 
-GLOBAL my_rindex:function
+GLOBAL rindex:function
 
-my_rindex:
+rindex:
 
  PUSH RBP
  MOV RBP, RSP

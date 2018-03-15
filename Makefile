@@ -38,12 +38,17 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) -shared -o $(NAME) $(OBJ)
 
-test: re
-	$(CC) -o $(TEST) -g main.c $(OBJ)
+test_run: all
+	make -C ./tests re
+	./tests/tests
+
+test_fclean:
+	make -C ./tests fclean
+
 clean:
 	rm -f $(OBJ)
 
-fclean: clean
+fclean: clean test_fclean
 	rm -f $(NAME)
 	rm -f $(TEST)
 

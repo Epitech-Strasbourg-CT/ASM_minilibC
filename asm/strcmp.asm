@@ -2,9 +2,9 @@ BITS 64
 
 SECTION .text
 
-GLOBAL my_strcmp:function
+GLOBAL strcmp:function
 
-my_strcmp:
+strcmp:
 
  PUSH RBP
  MOV RBP, RSP

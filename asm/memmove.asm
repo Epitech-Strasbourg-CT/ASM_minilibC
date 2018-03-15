@@ -2,9 +2,9 @@ BITS 64
 
 SECTION .text
 
-GLOBAL my_memmove:function
+GLOBAL memmove:function
 
-my_memmove:
+memmove:
 
  PUSH RBP
  MOV RBP, RSP

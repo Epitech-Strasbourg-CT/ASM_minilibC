@@ -2,9 +2,9 @@ BITS 64
 
 SECTION .text
 
-GLOBAL my_strcasecmp:function
+GLOBAL strcasecmp:function
 
-my_strcasecmp:
+strcasecmp:
 
  PUSH RBP
  MOV RBP, RSP

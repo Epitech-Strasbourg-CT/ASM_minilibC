@@ -2,9 +2,9 @@ BITS 64
 
 SECTION .text
 
-GLOBAL my_memset:function
+GLOBAL memset:function
 
-my_memset:
+memset:
 
  PUSH RBP
  MOV RBP, RSP
