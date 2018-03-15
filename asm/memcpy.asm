@@ -16,8 +16,8 @@ memcpy:
 loop:
  CMP RDX, 0
  JE endloop
- MOV R8, [RSI]
- MOV [RDI], R8
+ MOV R8B, BYTE[RSI]
+ MOV BYTE[RDI], R8B
  DEC RDX
  INC RDI
  INC RSI

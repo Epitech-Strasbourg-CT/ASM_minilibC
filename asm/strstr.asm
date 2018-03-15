@@ -10,9 +10,6 @@ strstr:
  MOV RBP, RSP
 
 loop:
-	CMP BYTE[RDI], 0
-	JE not_found ; test end of first str
-
 	XOR RCX, RCX
 	XOR R8, R8
         XOR R9, R9
@@ -29,6 +26,9 @@ loop:
 		INC RCX
 		JMP cmp_loop
 	end_cmp_loop:
+
+	CMP BYTE[RDI], 0
+	JE not_found ; test end of first str
 
 	INC RDI
 	JMP loop

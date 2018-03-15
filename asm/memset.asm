@@ -16,7 +16,7 @@ memset:
 loop:
  CMP RDX, 0
  JE endloop
- MOV [RDI], RSI
+ MOV BYTE[RDI], SIL
  DEC RDX
  INC RDI
  JMP loop
