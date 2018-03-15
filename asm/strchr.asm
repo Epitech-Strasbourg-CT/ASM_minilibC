@@ -14,10 +14,10 @@ strchr:
 
 loop:
 	MOV R8B, [RDI+RCX]
+	CMP R8B, SIL
+	JE save_addr
 	CMP R8B, 0
 	JE end
-        CMP R8B, SIL
-	JE save_addr
 	INC RCX
 	JMP loop
 
