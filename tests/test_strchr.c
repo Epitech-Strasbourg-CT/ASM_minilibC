@@ -37,4 +37,7 @@ Test(strchr, match, .init = setup, .fini = teardown)
 	a = my_strchr(test, 'Q');
 	b = strchr(test, 'Q');
 	cr_assert_eq(a, b, "letter not found");
+	a = my_strchr(test, 0);
+	b = strchr(test, 0);
+	cr_assert_eq(a, b, "letter not found");
 }

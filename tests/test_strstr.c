@@ -10,19 +10,19 @@
 #include <criterion/criterion.h>
 
 static void *lib = NULL;
-static char *my_strstr(const char *haystack, const char *needle) = NULL;
+static char *(*my_strstr)(const char *haystack, const char *needle) = NULL;
 
 static void setup(void)
 {
 	lib = dlopen("./libasm.so", RTLD_LAZY);
-	my_strchr = dlsym(lib, "strchr");
+	my_strstr = dlsym(lib, "strstr");
 }
 
 static void teardown(void)
 {
 	dlclose(lib);
 	lib = NULL;
-	my_strchr = NULL;
+	my_strstr = NULL;
 }
 
 Test(strstr, strstr1, .init = setup, .fini = teardown)
@@ -33,12 +33,7 @@ Test(strstr, strstr1, .init = setup, .fini = teardown)
 
 	a = my_strstr(test, "FGHJ");
 	b = strstr(test, "FGHJ");
-	printf("cmp %s : %d\n", test, a == b);
-	if (a != b) {
-		printf("b %s\n", b);
-		printf("a %s\n", a);
-		exit(84);
-	}
+	cr_assert_eq(a, b);
 }
 
 Test(strstr, strstr2, .init = setup, .fini = teardown)
@@ -47,14 +42,9 @@ Test(strstr, strstr2, .init = setup, .fini = teardown)
 	char *a = 0;
 	char *b = 0;
 
-	a = my_strstr(test, "AZER");
-	b = strstr(test, "AZER");
-	printf("cmp %s : %d\n", test, a == b);
-	if (a != b) {
-		printf("b %s\n", b);
-		printf("a %s\n", a);
-		exit(84);
-	}
+	a = my_strstr(test, "ZER");
+	b = strstr(test, "ZER");
+	cr_assert_eq(a, b);
 }
 
 Test(strstr, strstr3, .init = setup, .fini = teardown)
@@ -65,12 +55,7 @@ Test(strstr, strstr3, .init = setup, .fini = teardown)
 
 	a = my_strstr(test, " ");
 	b = strstr(test, " ");
-	printf("cmp %s : %d\n", test, a == b);
-	if (a != b) {
-		printf("b %s\n", b);
-		printf("a %s\n", a);
-		exit(84);
-	}
+	cr_assert_eq(a, b);
 }
 
 Test(strstr, strstr4, .init = setup, .fini = teardown)
@@ -82,12 +67,7 @@ Test(strstr, strstr4, .init = setup, .fini = teardown)
 	test = "AZERTYUIOP";
 	a = my_strstr(test, "UIOP");
 	b = strstr(test, "UIOP");
-	printf("cmp %s : %d\n", test, a == b);
-	if (a != b) {
-		printf("b %s\n", b);
-		printf("a %s\n", a);
-		exit(84);
-	}
+	cr_assert_eq(a, b);
 }
 
 Test(strstr, strstr5, .init = setup, .fini = teardown)
@@ -99,12 +79,7 @@ Test(strstr, strstr5, .init = setup, .fini = teardown)
 	test = "AZERTYUIOP";
 	a = my_strstr(test, "UIOP1");
 	b = strstr(test, "UIOP1");
-	printf("cmp %s : %d\n", test, a == b);
-	if (a != b) {
-		printf("b %s\n", b);
-		printf("a %s\n", a);
-		exit(84);
-	}
+	cr_assert_eq(a, b);
 }
 
 Test(strstr, strstr6, .init = setup, .fini = teardown)
@@ -116,10 +91,16 @@ Test(strstr, strstr6, .init = setup, .fini = teardown)
 	test = "AZERTYUIOP";
 	a = my_strstr(test, "");
 	b = strstr(test, "");
-	printf("cmp %s : %d\n", test, a == b);
-	if (a != b) {
-		printf("b %s\n", b);
-		printf("a %s\n", a);
-		exit(84);
-	}
+	cr_assert_eq(a, b);
+}
+
+Test(strstr, strstr7, .init = setup, .fini = teardown)
+{
+	char *test = "";
+	char *a = 0;
+	char *b = 0;
+
+	a = my_strstr(test, "");
+	b = strstr(test, "");
+	cr_assert_eq(a, b, "me %p != sys %p", a, b);
 }

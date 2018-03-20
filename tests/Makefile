@@ -17,7 +17,9 @@ SRC	=	test_memcpy.c		\
 		test_strcspn.c		\
 		test_strlen.c		\
 		test_strncmp.c		\
-		test_strpbrk.c
+		test_strstr.c		\
+		test_strpbrk.c		\
+		test_call.c
 
 OBJ	=	$(SRC:.c=.o)
 

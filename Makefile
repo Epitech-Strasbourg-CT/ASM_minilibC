@@ -26,7 +26,9 @@ SRC	=	strcmp.asm	\
 		memcpy.asm	\
 		strstr.asm	\
 		memmove.asm	\
-		strchr.asm
+		strchr.asm	\
+		write.asm	\
+		read.asm
 
 OBJ	=	$(addprefix $(ASM_FOLDER), $(SRC:.asm=.o))
 
